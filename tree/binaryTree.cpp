@@ -72,6 +72,13 @@ bool search(TreeNode* node, int val) {
     return search(node->left, val) || search(node->right, val);
 }
 
+int maxDepth(TreeNode* root) {
+    if (!root) return 0;
+    int left = maxDepth(root->left);
+    int right = maxDepth(root->right);
+    return max(left, right) + 1;
+}
+
 int main() {
     TreeNode* root = new TreeNode(1);
     root->left = new TreeNode(2);
@@ -91,7 +98,6 @@ int main() {
     cout << "The value " << 10 << " is in the tree?" << endl;
     cout << search(root, 10) << endl;
     cout << "The value " << 7 << " is in the tree?" << endl;
-    cout << search(root, 7) << endl;
+    cout << "The max depth of the binary tree is " << maxDepth(root) << endl;
 
-    return 0;
 }
